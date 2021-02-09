@@ -1,0 +1,34 @@
+<h1>Stories</h1>
+<div class="row">
+  <% stories.forEach(stories => { %>
+  <div class="col s12 m4">
+    <div class="card">
+      <div class="card-content center-align">
+        <% if( user==stories.user.id){ %>
+
+        <a
+          style="margin: 20px"
+          href="/stories/<%= stories.id %>"
+          class="btn-floating halfway-fab blue"
+          ><i class="fas fa-edit fa-small"></i
+        ></a>
+        <%- include("../partials/deletebtn.ejs" , {url :
+        `/stories/${stories.id}` }) %> <% } %>
+        <h5><%= stories.title %></h5>
+        <p><%= stories.body.substring(0,50).replace(/<(?:.|\n)*?>/gm, '') %></p>
+        <br />
+        <div class="chip">
+          <img src="<%= stories.user.Image %>" alt="" />
+          <a href="/stories/user/<%= stories._id %>"
+            ><%= stories.user.displayName %></a
+          >
+        </div>
+      </div>
+      <div class="card-action center-align">
+        <a href="show/<%= stories._id %>" class="btn grey">Read More</a>
+      </div>
+    </div>
+  </div>
+
+  <% }) %>
+</div>
