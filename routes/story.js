@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Story = require("../models/story");
+const users= require("../models/user"); 
 const { ensureAuth } = require("../middleware/auth");
 const mongoose = require("mongoose"); 
+const { request } = require("express");
+const user = require("../models/user");
 const app = express();
 
 
@@ -63,6 +66,16 @@ router.get("/show/:id", ensureAuth, async(req,res)=>{
   })
  
 
+
+})
+
+router.get("/user/:id", ensureAuth, async(req,res)=>{
+
+  const username =  await Story.find({user:req.params.id}).populate("user").lean();
+
+    res.render("stories/user.ejs",{
+      title:username 
+    }); 
 
 })
 
