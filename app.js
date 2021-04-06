@@ -49,7 +49,7 @@ app.use(express.static("public"));
 app.use("/", indexrouter);
 app.use("/auth", authrouter);
 app.use("/stories", require("./routes/story"));
-dotenv.config({ path: "./config/config.env" });
+dotenv.config({  path: "./config/config.env" });
 
 app.listen(port, () => {
   console.log(`listening at port number ${port}`);
