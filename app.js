@@ -27,7 +27,7 @@ const indexrouter = require("./routes/index");
 const expressEjsLayout = require("express-ejs-layouts");
 const conDb = require("./config/db");
 conDb();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 app.use(
   session({
